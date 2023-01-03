@@ -35,6 +35,7 @@ docker run -d \
     -e POSTGRES_DB=postgres \
     -e POSTGRES_INITDB_ARGS="--data-checksums -E UTF8" \
     -p ${LOCAL_PORT_NUMBER}:5432 \
+    -c 'config_file=/etc/postgresql/postgresql.conf' \
     local/postgres-14
 
 # log inside docker to verify.

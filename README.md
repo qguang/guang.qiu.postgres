@@ -26,3 +26,22 @@ Set up simple lab for learning postgres.
 ```
 
 
+## Key location/command
+
+### location
+
+
+| location                               | Description                                                                  |
+| ------------------------------------- | ---------------------------------------------------------------------------- |
+| /usr/lib/postgresql/14/bin/           | binary command location   |
+| /usr/share/postgresql/14/extension    | extension location        |
+| /var/lib/postgresql/data              | data location             |
+
+
+### command
+
+| command                                                       | Description                                                                  |
+| --------------------------------------------------------------| ---------------------------------------------------------------------------- |
+| pg_ctl -D /var/lib/postgresql/data -l logfile start           | binary command location   |
+
+
