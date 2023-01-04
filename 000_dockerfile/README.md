@@ -55,7 +55,7 @@ docker rm -f local-postgres-14
 
 ## Use Docker build to setup a database structure
 
-We use 100_setup_crm_database.sql to set up an lab environment. The file is copied to docker-entrypoint-initdb.d by docker build process and executed upon first time database startup. Please note that it is not necessary to rely on docker build process to run such script. It is used in this way just to show how the docker build process works.
+In addition to set up docker image, we use 100_setup_crm_database.sql to set up an lab environment. The file is copied to docker-entrypoint-initdb.d by docker build process. It will be executed as part database initialization process. Please note that it is not necessary to rely on docker build process to run such script. It is used in this way just to show how the docker build process works.
 
 The SQL script creates the following database objects:
 1. crm_database
@@ -65,7 +65,7 @@ The SQL script creates the following database objects:
     - crm_rw_user
     - crm_ro_user
 
-In addition to those database objects, it also sets up privillegs/permssions for these users.
+In addition to those database objects, it also sets up permssions for these users.
 
 ```
 
@@ -95,5 +95,10 @@ psql "postgresql://crm_adm_user:crm_adm_user_001@127.0.0.1:25432/crm_database"
 psql "postgresql://crm_ro_user:crm_ro_user_001@127.0.0.1:25432/crm_database"
 psql "postgresql://crm_rw_user:crm_rw_user_001@127.0.0.1:25432/crm_database"
 
-
 ```
+
+## PostgreSQL extension
+
+The Dockerfile has steps to install necessary files used by PostgreSQL extension. For example we use apt-get to install pgaudit.
+
+Shell scripts are called as part database initialization process to create extensions.
