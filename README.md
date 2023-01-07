@@ -1,13 +1,16 @@
 # guang.qiu.postgres
 
-Set up simple lab for learning postgres.
+Set up simple Docker container lab for learning PostgreSQL.
 
 ## Key things
 
 1. Hard-coded PostgreSQL version 14 in many places, i.e. readme, Dockerfile etc.
 2. All users' password has convention of ${username}_001. For example, if password of user *postgres* is *postgres_001*.
 
+## How to set it up
 
+- 000_dockerfile/README.md for instruction to start up Docker container
+- 001_liquibase/README.md for instruction to maintain database schema objects.
 
 ## Repo layout
 ```bash
@@ -15,23 +18,22 @@ Set up simple lab for learning postgres.
     ├── 000_Dockerfile
     │   ├── Dockerfile
     │   └── README.md
-    ├── Lab_001
+    ├── 001_liquibase
     │   └── README.md
-    ├── Lab_002
+    ├── 002_partition
     │   └── README.md
-    ├── Lab_003
+    ├── Lab_cron
     │   └── README.md
-    ├── liquibase_changelog_master.yaml
+    ├── postgres
+    │   └── README.md
     └── README.md
 ```
 
 
-## Key location/command
-
-### location
+## Key files
 
 
-| location                               | Description                                                                  |
+| Path                                   | Description                                                                  |
 | -------------------------------------- | ---------------------------------------------------------------------------- |
 | /usr/lib/postgresql/14/bin/            | binary command location   |
 | /etc/postgresql/postgresql.conf        | configuration file        |

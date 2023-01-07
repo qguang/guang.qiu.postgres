@@ -1,0 +1,5 @@
+databaseChangeLog:
+
+- include:
+      relativeToChangelogFile: true
+      file: ddl/setup_pega_corro_serv_test_only_qa_user.sql

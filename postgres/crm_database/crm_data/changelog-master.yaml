@@ -1,0 +1,55 @@
+---
+
+databaseChangeLog:
+  # Just a DEMO
+  # Expectation: set schema at beginning of changelog. Just to save us to fully quanlify database object name in all SQLs.
+  # It is not really useful as we rely on user's search_path to find crm_data
+  - changeSet:  
+        id: set-search_path-${p.schema_name}
+        author: SYSTEM
+        runAlways: true
+        changes:  
+            - sql:  
+                #sql: set schema '${p.schema_name}';
+                sql: set search_path to ${p.schema_name},public;
+        rollback:
+            - sql:
+                sql: set search_path to ${p.schema_name},public;
+
+
+  - include:
+      relativeToChangelogFile: true
+      file: ddl/customer.sql
+
+  - include:
+      relativeToChangelogFile: true
+      file: ddl/customer_address.sql
+
+  - include:
+      relativeToChangelogFile: true
+      file: ddl/account.sql
+
+  - include:
+      relativeToChangelogFile: true
+      file: ddl/account_holder.sql
+
+  - include:
+      relativeToChangelogFile: true
+      file: ddl/transaction.sql
+
+
+  # Just a DEMO
+  # Expectation: set schema at end of change log. It is used when rollback is executed.
+  # It is not really useful as we rely on user's search_path to find crm_data
+  # And it worth of noting that it doesn't really work well if we have to rollback multiple times.
+  # i.e. deploy 3 scripts. rollback 1 and find we need to rollback another 1. As this set-search_path had been rolled back/executed along with the first rollback
+  - changeSet:  
+        id:  set-search_path--${p.schema_name}-rollback
+        author: SYSTEM
+        runAlways: true
+        changes:  
+            - sql:  
+                sql: set search_path to ${p.schema_name},public;
+        rollback:
+            - sql:
+                sql: set search_path to ${p.schema_name},public;

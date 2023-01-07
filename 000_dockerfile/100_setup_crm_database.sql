@@ -12,6 +12,8 @@ CREATE ROLE crm_adm_user WITH
   NOREPLICATION
   ENCRYPTED PASSWORD 'crm_adm_user_001';
 
+alter role crm_adm_user set search_path = crm_data, public;
+
 -- ----------------------------------------------------------------------------------------
 -- create read/write user for application to manipulate data
 -- ----------------------------------------------------------------------------------------
@@ -23,6 +25,8 @@ CREATE ROLE crm_rw_user WITH
   NOCREATEROLE
   NOREPLICATION
   ENCRYPTED PASSWORD 'crm_rw_user_001';
+
+alter role crm_rw_user set search_path = crm_data, public;
 
 -- ----------------------------------------------------------------------------------------
 -- read only user for read only use case
@@ -36,6 +40,7 @@ CREATE ROLE crm_ro_user WITH
   NOREPLICATION
   ENCRYPTED PASSWORD 'crm_ro_user_001';
 
+alter role crm_ro_user set search_path = crm_data, public;
 
 -- ----------------------------------------------------------------------------------------
 -- create DB
