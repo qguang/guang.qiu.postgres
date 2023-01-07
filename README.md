@@ -5,7 +5,7 @@ Set up simple Docker container lab for learning PostgreSQL.
 ## Key things
 
 1. Hard-coded PostgreSQL version 14 in many places, i.e. readme, Dockerfile etc.
-2. All users' password has convention of ${username}_001. For example, if password of user *postgres* is *postgres_001*.
+2. All users' password has convention of ${username}_001. For example, the password of user *postgres* is *postgres_001*.
 
 ## How to set it up
 
